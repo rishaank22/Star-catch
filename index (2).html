@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title> Star Catcher </title>
+  <style>body {
+    background-color:black;
+    background-image:url('');
+    background-size: 100%;
+    font-family: 'Arial', sans-serif;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    color:white;
+  }
+  
+  #stars {
+    width:70px;
+    height:70px;
+    position:absolute;
+    top:200px;
+    left:400px;
+    border-radius:1000px;
+    padding:10px;
+    transition:0.5s all ease;
+  }
+  
+  #stars:hover {
+    width:80px;
+    height:80px;
+  }
+  
+  #stars:active {
+    border: 2px solid white;
+  }
+  
+  
+  #heading {
+    font-size: 32px;
+    color:lightyellow;
+    font-weight: normal;
+  }
+  #gameOver {
+    display:none;
+    position:absolute;
+    top:200px;
+    width:100%;
+    text-align: center;
+    font-size:72px;
+    color:lightyellow;
+    text-shadow:1px 1px 1px red;
+  }
+  
+  #score {
+    position:absolute;
+    right:10px;
+    bottom:10px;
+    font-size:100px;
+    color:white;
+  }</style>
+</head>
+<body>
+  <div class="main">
+     <img id="stars" src="https://margaret.codewizardshq.com/js_projects_for_kids/star_catcher/star-yellow.png"/>
+  </div>
+  
+  <div id="gameOver"> <p>Game Over, </p><p> Refresh to play again </p></div>
+  
+
+  <div id="score"> 0</div>
+        
+        
+</body>
+<script>// setting a variable as an array
+    // we use array variable to store multiple values 
+    const starArray =  ['https://margaret.codewizardshq.com/js_projects_for_kids/star_catcher/star-yellow.png', 'https://margaret.codewizardshq.com/js_projects_for_kids/star_catcher/star-blue.png',  'https://margaret.codewizardshq.com/js_projects_for_kids/star_catcher/star-purple.png'];
+    // to access array values, below is the example
+    //console.log(starArray[2]);
+    
+    //setting a variable called countdown with the value 10
+    const countdown = 10;
+    
+    // setting a variable called score with the value 0
+    let score = 0;
+    
+    // query selector access the HTML element from javascript
+    const scoreId = document.querySelector('#score');
+    
+    const stars = document.querySelector("#stars");
+    
+    const addScore = () => {
+        score = score + 1;
+      scoreId.innerText = score;
+      
+    }
+    
+    function moveStars() {
+        stars.style.top = Math.random()*400+'px';
+      stars.style.left = Math.random()*300+'px';
+    }
+    
+    setInterval(moveStars, 500);
+    
+    stars.addEventListener("click", addScore);
+    
+    
+    function gameOver() {
+        const gameOverVar = document.querySelector("#gameOver");
+      gameOverVar.style.display = 'block';
+      stars.style.display = 'none';
+      console.log("game over");
+    }
+    
+    setTimeout(gameOver, 10000);</script>
+</html> 
